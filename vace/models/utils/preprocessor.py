@@ -235,7 +235,7 @@ class VaceVideoProcessor(object):
         return self.load_video_batch(data_key, data_key2, crop_box=crop_box, seed=seed, **kwargs)
 
     def load_video_batch(self, *data_key_batch, crop_box=None, seed=2024, **kwargs):
-        rng = np.random.default_rng(seed + hash(data_key_batch[0]) % 10000)
+        rng = np.random.default_rng(3000)
         # read video
         import decord
         decord.bridge.set_bridge('torch')

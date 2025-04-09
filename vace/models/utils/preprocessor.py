@@ -190,7 +190,8 @@ class VaceVideoProcessor(object):
         # min/max area of the [latent video]
         min_area_z = self.min_area / (dh * dw)
         max_area_z = min(self.seq_len, self.max_area / (dh * dw), (h // dh) * (w // dw))
-
+        if min_area_z > max_area_z:
+            min_area_z, max_area_z = max_area_z, min_area_z
         # sample a frame number of the [latent video]
         rand_area_z = np.square(np.power(2, rng.uniform(
             np.log2(np.sqrt(min_area_z)),
